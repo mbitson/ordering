@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="ordering" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="ordering" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="ordering" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="ordering" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,22 +13,34 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="bower_components/angular-material/modules/js/tabs/tabs.min.css">
+  <link rel="stylesheet" href="bower_components/angular-material/modules/js/tabs/tabs-default-theme.min.css">
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/orders">View Orders</a></li>
-    <li><a href="#/order">Place An Order</a></li>
-  </ul>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-  <div ng-view></div>
+  <div ng-controller="AppCtrl" class="tabsdemoDynamicTabs">
+      <md-tabs md-selected="selectedIndex">
+          <md-tab label="Current Orders">
+              Test 1
+              <!--<div ng-include src="'orders/orders.html'"></div>-->
+          </md-tab>
+          <md-tab label="Place an Order">
+              Test 2
+              <!--<div ng-include src="'order/order.html'"></div>-->
+          </md-tab>
+      </md-tabs>
+  </div>
 
-  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/hammerjs/hammer.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+  <script src="bower_components/angular-material/angular-material.min.js"></script>
+  <script src="bower_components/angular-material/modules/js/tabs/tabs.min.js"></script>
   <script src="app.js"></script>
-  <script src="orders/orders.js"></script>
-  <script src="order/order.js"></script>
-  <script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
 </body>
 </html>
