@@ -1,0 +1,50 @@
+<md-whiteframe class="main-content md-whiteframe-z1" flex layout-fill layout="column" layout-align="center center">
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">
+            <span>Order Information</span>
+        </h1>
+    </md-toolbar>
+    <md-content class="md-padding" layout="row" layout-sm="column" flex layout-fill>
+        <md-input-container flex>
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" ng-model="data.first_name">
+        </md-input-container>
+        <md-input-container flex>
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" ng-model="data.last_name">
+        </md-input-container>
+    </md-content>
+    <md-content class="md-accent md-padding" layout="row" layout-sm="column" flex layout-fill>
+        <md-input-container flex>
+            <p>Please select an entree:
+            <md-radio-group id="entree" ng-model="data.entree">
+                <md-radio-button value="Salmon">Salmon</md-radio-button>
+                <md-radio-button value="Steak">Steak</md-radio-button>
+            </md-radio-group>
+            </p>
+        </md-input-container>
+        <md-input-container flex>
+            <p>Please select a side:
+                <md-radio-group id="entree" ng-model="data.side">
+                    <md-radio-button value="Potatoes">Potatoes</md-radio-button>
+                    <md-radio-button value="Vegetables">Vegetables</md-radio-button>
+                </md-radio-group>
+            </p>
+        </md-input-container>
+        <md-input-container flex>
+            <p>Please select an beverage:
+                <md-radio-group id="entree" ng-model="data.beverage">
+                    <md-radio-button value="Coke">Coke</md-radio-button>
+                    <md-radio-button value="Pepsi">Pepsi</md-radio-button>
+                </md-radio-group>
+            </p>
+        </md-input-container>
+    </md-content>
+    <md-toolbar>
+        <h1 class="md-toolbar-tools" layout="row">
+            <md-button class="md-raised md-accent" ng-click="submitOrder()">Place Order</md-button>
+            <div flex></div>
+            <md-button class="md-raised md-warn" ng-click="resetOrder()">Reset Order</md-button>
+        </h1>
+    </md-toolbar>
+</md-whiteframe>

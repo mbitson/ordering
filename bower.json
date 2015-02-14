@@ -1,0 +1,16 @@
+{
+  "name": "ordering",
+  "description": "A sample firebase ordering app.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "angular": null,
+    "angular-route": null,
+    "angular-loader": null,
+    "angular-mocks": null,
+    "angular-material": null,
+    "html5-boilerplate": null,
+    "hammerjs": null,
+    "angular-material-icons": "~0.4.0"
+  }
+}

@@ -1,0 +1,35 @@
+
+<div class="after-tabs-area">
+    <md-content layout="column">
+        <md-list>
+            <md-item ng-repeat="order in orders">
+                <md-item-content>
+                    <div class="md-tile-content" flex layout="row">
+                        <div flex>{{order.first_name}}</div>
+                        <div flex>{{order.last_name}}</div>
+                        <div flex>{{order.entree}}</div>
+                        <div flex>{{order.side}}</div>
+                        <div flex>{{order.beverage}}</div>
+                    </div>
+                </md-item-content>
+            </md-item>
+        </md-list>
+    </md-content>
+    <md-content md-theme="nit-dark" layout="row" class="md-padding">
+        <div flex></div>
+        <md-input-container>
+            <label for="filterName">Filter By Customer Name</label>
+            <input type="text" id="filterName" ng-model="data.filters.name">
+        </md-input-container>
+        <div flex></div>
+        <md-input-container>
+            <label for="filterNumber">Filter By Customer Number</label>
+            <input type="text" id="filterNumber" ng-model="data.filters.number">
+        </md-input-container>
+        <div flex></div>
+        <md-checkbox ng-model="data.filter.archived" aria-label="Disabled">
+            Show Archived?
+        </md-checkbox>
+        <div flex></div>
+    </md-content>
+</div>

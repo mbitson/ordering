@@ -7,14 +7,6 @@
   padding: 0 0 0.5em;
 }
 
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
-}
-
 .menu > li {
   display: inline;
 }
@@ -27,4 +19,9 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+
+.small-text{
+    font-family: "Open Sans", Arial, sans-serif;
+    font-size:20px !important;
 }
