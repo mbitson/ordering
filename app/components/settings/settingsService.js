@@ -1,27 +1,27 @@
 /**
- * Orders service for managing orders through FireBase.
+ * Settings service for managing settings through FireBase.
  * Created by mbitson on 2/13/2015.
  */
-app.factory('ordersService', [ "$firebase", function ordersFirebaseService($firebase)
+app.factory('settingsService', [ "$firebase", function settingsFirebaseService($firebase)
 {
     // Connect to firebase
-    var _ref = new Firebase("https://shining-heat-9147.firebaseio.com/orders/");
+    var _ref = new Firebase("https://shining-heat-9147.firebaseio.com/settings/");
 
     // Create a sync of the reference
     var sync = $firebase(_ref);
 
     // Create three-way data binding on object using $asObject()
-    var orders = sync.$asObject();
+    var settings = sync.$asObject();
 
     // Return the corresponding function...
     return {
 
         /*
          * Method to assign
-         * all orders to the scope.
+         * all settings to the scope.
          */
         init: function($scope) {
-            orders.$bindTo($scope, "orders");
+            settings.$bindTo($scope, "settings");
         },
 
         /*

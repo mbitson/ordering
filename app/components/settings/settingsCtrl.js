@@ -1,17 +1,21 @@
 /**
  * Created by mbitson on 2/13/2015.
  */
-app.controller('settingsCtrl', ["$scope", "$firebase", "$timeout", function ($scope, $firebase, $timeout) {
-    var ref = new Firebase("https://shining-heat-9147.firebaseio.com/");
-    var ordersRef = ref.child("settings");
-    var sync = $firebase(ordersRef);
-    var syncObject = sync.$asObject();
-    syncObject.$bindTo($scope, "settings");
-
+app.controller('settingsCtrl', ["$scope", "$firebase", "$timeout", function ($scope, $firebase, $timeout)
+{
+    // Init data array (default settings)
+    $scope.settings = {};
     $scope.data = {
         icon: 'settings'
     };
-    $scope.settings = {};
+
+    /*
+     * Settings Functions
+     */
+
+    /*
+     * Settings Icon Functions
+     */
     $scope.iconEnter = function(){
         if($scope.data.icon !== 'check_circle'){
             $scope.data.icon = 'settings_applications';
@@ -29,7 +33,4 @@ app.controller('settingsCtrl', ["$scope", "$firebase", "$timeout", function ($sc
     var iconRestore = function(){
         $scope.data.icon = 'settings';
     };
-    //$scope.submitOrder = function(){
-    //    ordersRef.push($scope.data);
-    //}
 }])

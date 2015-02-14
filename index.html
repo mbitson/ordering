@@ -62,10 +62,10 @@
     </md-tabs>
     <ng-switch on="selectedIndex" class="tabpanel-container" ng-controller="ordersCtrl">
         <div role="tabpanel" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()" >
-            <div ng-include src="'/app/components/orders/ordersListView.html'"></div>
+            <div ng-include src="'/app/components/orders/views/list.html'"></div>
         </div>
         <div role="tabpanel" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
-            <div ng-include src="'/app/components/orders/ordersCreateView.html'"></div>
+            <div ng-include src="'/app/components/orders/views/create.html'"></div>
         </div>
     </ng-switch>
 </div>
@@ -91,6 +91,7 @@
 
 <!-- Register Services -->
 <script src="/app/components/orders/ordersService.js"></script>
+<script src="/app/components/orders/settingsService.js"></script>
 
 <!-- Register Controllers -->
 <script src="/app/components/tabs/tabsCtrl.js"></script>

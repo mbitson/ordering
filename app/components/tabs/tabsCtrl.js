@@ -1,7 +1,7 @@
 /**
  * Created by mbitson on 2/13/2015.
  */
-app.controller('tabsCtrl', function( $scope ) {
+app.controller('tabsCtrl', ["$scope", function( $scope ) {
     $scope.selectedIndex = 0;
     $scope.next = function() {
         $scope.selectedIndex = Math.min($scope.selectedIndex + 1, 2) ;
@@ -12,4 +12,4 @@ app.controller('tabsCtrl', function( $scope ) {
     $scope.select = function($index){
         $scope.selectedIndex = $index;
     };
-});
+}]);
