@@ -9,24 +9,50 @@
   <title>Ordering</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/src/css/main.css">
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="/bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="/bower_components/html5-boilerplate/src/css/main.css">
+  <link rel="stylesheet" href="/app/app.css">
   <script src="bower_components/html5-boilerplate/src/js/vendor/modernizr-2.8.3.min.js"></script>
-  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-  <link rel="stylesheet" href="bower_components/angular-material/default-theme.css">
-  <link rel="stylesheet" href="bower_components/angular-material/modules/js/tabs/tabs.min.css">
-  <link rel="stylesheet" href="bower_components/angular-material/modules/js/content/content.min.css">
-  <link rel="stylesheet" href="bower_components/angular-material/modules/js/list/list.min.css">
-  <link rel="stylesheet" href="bower_components/angular-material/modules/js/tabs/tabs-default-theme.min.css">
-  <link rel="stylesheet" href="bower_components/angular-material/modules/js/content/content-default-theme.min.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/default-theme.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/modules/js/tabs/tabs.min.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/modules/js/content/content.min.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/modules/js/list/list.min.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/modules/js/tabs/tabs-default-theme.min.css">
+  <link rel="stylesheet" href="/bower_components/angular-material/modules/js/content/content-default-theme.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-  <div ng-controller="TabController">
-      <md-tabs md-selected="selectedIndex" class="md-accent" md-no-ink>
+  <div ng-controller="settingsCtrl">
+      <md-toolbar class="md-tall" layout="row">
+          <div flex layout="column" layout-align="left center">
+              <span flex></span>
+              <span class="md-flex small-text md-toolbar-tools md-toolbar-tools-bottom">Ordering Demo Application</span>
+              <span flex></span>
+          </div>
+          <div
+              layout="column"
+               class="md-padding"
+               layout-align="right center"
+               ng-mouseenter="iconEnter()"
+               ng-mouseleave="iconLeave()"
+               ng-click="iconClick()">
+              <span flex></span>
+              <ng-md-icon
+                  icon="{{data.icon}}"
+                  style="margin-right:25px;"
+                  size="44"
+                  options='{"duration": 300, "rotation": "counterclock"}'>
+              </ng-md-icon>
+              <span flex></span>
+          </div>
+      </md-toolbar>
+  </div>
+  <div ng-controller="tabsCtrl">
+      <md-tabs md-selected="selectedIndex" md-no-ink>
           <md-tab md-on-select="select(0)">
               Current Orders
           </md-tab>
@@ -34,28 +60,42 @@
               Place an Order
           </md-tab>
       </md-tabs>
-      <ng-switch on="selectedIndex" class="tabpanel-container" ng-controller="orderController">
+      <ng-switch on="selectedIndex" class="tabpanel-container" ng-controller="ordersCtrl">
           <div role="tabpanel" ng-switch-when="0" md-swipe-left="next()" md-swipe-right="previous()" >
-              <div ng-include src="'orders/orders.html'"></div>
+              <div ng-include src="'/app/components/orders/ordersListView.html'"></div>
           </div>
           <div role="tabpanel" ng-switch-when="1" md-swipe-left="next()" md-swipe-right="previous()">
-              <div ng-include src="'order/order.html'"></div>
+              <div ng-include src="'/app/components/orders/ordersCreateView.html'"></div>
           </div>
       </ng-switch>
   </div>
 
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/hammerjs/hammer.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-aria/angular-aria.js"></script>
-  <script src="bower_components/angular-material/angular-material.js"></script>
-  <script src="bower_components/angular-material/modules/js/tabs/tabs.js"></script>
-  <script src="bower_components/angular-material/modules/js/content/content.js"></script>
-  <script src="bower_components/angular-material/modules/js/list/list.js"></script>
-  <script src="app.js"></script>
+  <!-- Include all bower components -->
+  <script src="/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/bower_components/hammerjs/hammer.js"></script>
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-aria/angular-aria.js"></script>
+  <script src="/bower_components/angular-material/angular-material.js"></script>
+  <script src="/bower_components/angular-material/modules/js/tabs/tabs.js"></script>
+  <script src="/bower_components/angular-material/modules/js/content/content.js"></script>
+  <script src="/bower_components/angular-material/modules/js/list/list.js"></script>
+  <script src="/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.2.0/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/SVG-Morpheus/0.1.8/svg-morpheus.js"></script>
+
+  <!-- Register App -->
+  <script src="/app/app.js"></script>
+
+  <!-- Register Tab Resources -->
+  <script src="/app/components/tabs/tabsCtrl.js"></script>
+
+  <!-- Register Order Resources -->
+  <script src="/app/components/orders/ordersCtrl.js"></script>
+
+  <!-- Register Settings Resources -->
+  <script src="/app/components/settings/settingsCtrl.js"></script>
 </body>
 </html>

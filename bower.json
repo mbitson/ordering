@@ -10,6 +10,7 @@
     "angular-mocks": null,
     "angular-material": null,
     "html5-boilerplate": null,
-    "hammerjs": null
+    "hammerjs": null,
+    "angular-material-icons": "~0.4.0"
   }
 }
