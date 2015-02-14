@@ -1,0 +1,26 @@
+<!--/**
+ * Created by mbitson on 2/14/2015.
+ */-->
+
+<md-dialog aria-label="Mango (Fruit)">
+    <md-content layout="row" style="min-width:658px;">
+        <ng-md-icon
+                flex
+                layout-align="right center"
+                icon="{{icons.now}}"
+                style="fill:#58fa42;color:#58fa42;margin-right:5px;margin-left:5px;"
+                size="225"
+                options='{"duration": 300, "rotation": "counterclock"}'>
+        </ng-md-icon>
+        <p flex class="text-muted" style="font-size: 40px;"><strong>Thank you</strong><br />for your order!</p>
+    </md-content>
+    <div class="md-actions" layout="row">
+        <md-button class="md-accent" ng-click="answer('vieworders')">
+            View All Orders
+        </md-button>
+        <span flex></span>
+        <md-button md-theme="nit-success" class="md-primary" ng-click="answer('anotherorder')">
+            Place Another Order
+        </md-button>
+    </div>
+</md-dialog>

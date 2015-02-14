@@ -18,11 +18,17 @@
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/tabs/tabs.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/content/content.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/list/list.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/modules/js/divider/divider.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/modules/js/dialog/dialog.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/modules/js/sidenav/sidenav.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/tabs/tabs-default-theme.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/content/content-default-theme.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/modules/js/divider/divider-default-theme.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/modules/js/dialog/dialog-default-theme.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/modules/js/sidenav/sidenav-default-theme.min.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body id="ordering">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -41,18 +47,22 @@
                 ng-mouseleave="iconLeave()"
                 ng-click="iconClick()">
             <span flex></span>
-            <ng-md-icon
-                    icon="{{data.icon}}"
-                    style="margin-right:25px;"
-                    size="44"
-                    options='{"duration": 300, "rotation": "counterclock"}'>
-            </ng-md-icon>
+            <md-button aria-label="Settings" style="margin-right:25px;">
+                <ng-md-icon
+                        icon="{{data.icon}}"
+                        size="44"
+                        options='{"duration": 300, "rotation": "counterclock"}'>
+                </ng-md-icon>
+                <md-tooltip>
+                    Settings
+                </md-tooltip>
+            </md-button>
             <span flex></span>
         </div>
     </md-toolbar>
 </div>
 <div ng-controller="tabsCtrl">
-    <md-tabs md-selected="selectedIndex" md-no-ink>
+    <md-tabs class="md-accent" md-selected="selectedIndex" md-no-ink>
         <md-tab md-on-select="select(0)">
             Current Orders
         </md-tab>
@@ -68,6 +78,8 @@
             <div ng-include src="'/app/components/orders/views/create.html'"></div>
         </div>
     </ng-switch>
+    <!-- Include Settings Sidenav -->
+    <div ng-include src="'/app/components/settings/views/sidenav.html'"></div>
 </div>
 
 <!-- Include all bower components -->
@@ -81,6 +93,9 @@
 <script src="/bower_components/angular-material/modules/js/tabs/tabs.js"></script>
 <script src="/bower_components/angular-material/modules/js/content/content.js"></script>
 <script src="/bower_components/angular-material/modules/js/list/list.js"></script>
+<script src="/bower_components/angular-material/modules/js/divider/divider.js"></script>
+<script src="/bower_components/angular-material/modules/js/dialog/dialog.js"></script>
+<script src="/bower_components/angular-material/modules/js/sidenav/sidenav.js"></script>
 <script src="/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
 <script src="https://cdn.firebase.com/js/client/2.2.0/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
@@ -89,9 +104,13 @@
 <!-- Register App -->
 <script src="/app/app.js"></script>
 
-<!-- Register Services -->
+<!-- Register Services & Filters -->
 <script src="/app/components/orders/ordersService.js"></script>
-<script src="/app/components/orders/settingsService.js"></script>
+<script src="/app/components/orders/ordersFilters.js"></script>
+<script src="/app/components/settings/settingsService.js"></script>
+
+<!-- Add any dialog controllers -->
+<script src="/app/components/orders/dialogs/thankyou/ordersThankYouCtrl.js"></script>
 
 <!-- Register Controllers -->
 <script src="/app/components/tabs/tabsCtrl.js"></script>

@@ -2,16 +2,42 @@
 <div class="after-tabs-area">
     <md-content layout="column">
         <md-list>
-            <md-item ng-repeat="order in orders">
-                <md-item-content>
-                    <div class="md-tile-content" flex layout="row">
+            <md-item ng-repeat="order in orders | orderName">
+                <md-item-content flex>
+                    <div class="md-tile-content" layout="row">
                         <div flex>{{order.first_name}}</div>
                         <div flex>{{order.last_name}}</div>
                         <div flex>{{order.entree}}</div>
                         <div flex>{{order.side}}</div>
                         <div flex>{{order.beverage}}</div>
+                        <div flex layout-align="center center" layout="row">
+                        <md-button aria-label="Cancel">
+                            <ng-md-icon
+                                    icon="highlight_remove"
+                                    style="margin-right:5px;margin-left:5px;"
+                                    size="20"
+                                    options='{"duration": 300, "rotation": "counterclock"}'>
+                            </ng-md-icon>
+                            <md-tooltip>
+                                Cancel Order
+                            </md-tooltip>
+                        </md-button>
+                        <md-button aria-label="Complete">
+                            <ng-md-icon
+                                    icon="check_circle"
+                                    style="margin-right:5px;margin-left:5px;"
+                                    size="20"
+                                    options='{"duration": 300, "rotation": "counterclock"}'>
+                            </ng-md-icon>
+                            <md-tooltip>
+                                Complete Order
+                            </md-tooltip>
+                        </md-button>
+                        </div>
                     </div>
                 </md-item-content>
+
+                <md-divider class="md-accent"></md-divider>
             </md-item>
         </md-list>
     </md-content>
@@ -19,7 +45,7 @@
         <div flex></div>
         <md-input-container>
             <label for="filterName">Filter By Customer Name</label>
-            <input type="text" id="filterName" ng-model="data.filters.name">
+            <input type="text" id="filterName" ng-model="data.filters.name" ng-change="filter()">
         </md-input-container>
         <div flex></div>
         <md-input-container>

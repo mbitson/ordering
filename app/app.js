@@ -10,7 +10,9 @@ app.config(function ($mdThemingProvider) {
     // Configure a dark theme with primary foreground yellow
     $mdThemingProvider.theme('nit-dark', 'default')
         .primaryPalette('pink');
+    $mdThemingProvider.theme('nit-success', 'default')
+        .primaryPalette('green');
     $mdThemingProvider.theme('default')
         .primaryPalette('blue')
-        .accentPalette('pink');
+        .accentPalette('deep-purple');
 });

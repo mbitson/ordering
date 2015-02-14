@@ -1,7 +1,19 @@
 /**
  * Created by mbitson on 2/13/2015.
  */
-app.controller('settingsCtrl', ["$scope", "$firebase", "$timeout", function ($scope, $firebase, $timeout)
+app.controller('settingsCtrl', [
+    "$scope",
+    "$firebase",
+    "$timeout",
+    "$mdSidenav",
+    "settingsService",
+    function (
+        $scope,
+        $firebase,
+        $timeout,
+        $mdSidenav,
+        settingsService
+    )
 {
     // Init data array (default settings)
     $scope.settings = {};
@@ -9,9 +21,26 @@ app.controller('settingsCtrl', ["$scope", "$firebase", "$timeout", function ($sc
         icon: 'settings'
     };
 
+    // Init order service from FireBase
+    settingsService.init($scope);
+
     /*
-     * Settings Functions
+     * Data interaction functions
      */
+    $scope.addBlank = function (childNode){
+        settingsService.addChild(childNode, {});
+    };
+
+    /*
+     * SideNav Controls
+     */
+    $scope.close = function(){
+        $mdSidenav('settings').close();
+    };
+    $scope.open = function(){
+        $mdSidenav('settings').open();
+    };
+
 
     /*
      * Settings Icon Functions
@@ -29,8 +58,9 @@ app.controller('settingsCtrl', ["$scope", "$firebase", "$timeout", function ($sc
     $scope.iconClick = function(){
         $scope.data.icon = 'check_circle';
         $timeout(iconRestore, 2000);
+        $scope.open();
     };
     var iconRestore = function(){
         $scope.data.icon = 'settings';
     };
-}])
+}]);

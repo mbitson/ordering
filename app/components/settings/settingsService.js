@@ -5,13 +5,14 @@
 app.factory('settingsService', [ "$firebase", function settingsFirebaseService($firebase)
 {
     // Connect to firebase
-    var _ref = new Firebase("https://shining-heat-9147.firebaseio.com/settings/");
+    var ref = new Firebase("https://shining-heat-9147.firebaseio.com/");
+    var _ref = ref.child('settings');
 
     // Create a sync of the reference
     var sync = $firebase(_ref);
 
     // Create three-way data binding on object using $asObject()
-    var settings = sync.$asObject();
+    var settings = sync.$asArray();
 
     // Return the corresponding function...
     return {
@@ -21,7 +22,8 @@ app.factory('settingsService', [ "$firebase", function settingsFirebaseService($
          * all settings to the scope.
          */
         init: function($scope) {
-            settings.$bindTo($scope, "settings");
+            //settings.$bindTo($scope, "settings");
+            $scope.settings = settings;
         },
 
         /*
@@ -30,6 +32,16 @@ app.factory('settingsService', [ "$firebase", function settingsFirebaseService($
          */
         add: function(data) {
             sync.$push(data);
+        },
+
+        /*
+         * Method to add an object to a child node
+         */
+        addChild: function(childNode, data) {
+            console.log(childNode);
+            console.log(data);
+            var childSync = $firebase(_ref.child(childNode));
+            childSync.$push(data);
         }
     };
 }]);

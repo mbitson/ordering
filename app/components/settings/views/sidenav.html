@@ -1,0 +1,38 @@
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="settings">
+    <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Application Settings</h1>
+    </md-toolbar>
+    <md-content class="md-padding" ng-controller="settingsCtrl" layout="column">
+        <h2>Entrees</h2>
+        <md-input-container flex ng-repeat="product in settings.products" layout="row">
+            <input type="text" ng-model="product" flex />
+            <md-button ng-click="addBlank('products')">
+                <ng-md-icon
+                        icon="remove_circle"
+                        style="margin-right:5px;margin-left:5px;"
+                        size="20"
+                        options='{"duration": 300, "rotation": "counterclock"}'>
+                </ng-md-icon>
+                <md-tooltip>
+                    Remove Last Product
+                </md-tooltip>
+            </md-button>
+        </md-input-container>
+        <md-content layout="row" class="settings-products-toolbar">
+            <md-button ng-click="addBlank('products')">
+                <ng-md-icon
+                        icon="add_circle"
+                        style="margin-right:5px;margin-left:5px;"
+                        size="20"
+                        options='{"duration": 300, "rotation": "counterclock"}'>
+                </ng-md-icon>
+                <md-tooltip>
+                    Add New Product
+                </md-tooltip>
+            </md-button>
+        </md-content>
+        <md-button ng-click="close()" class="md-raised md-warn" style="position: fixed; bottom: 5px; display: block; width: 90%;">
+            Close Settings
+        </md-button>
+    </md-content>
+</md-sidenav>
