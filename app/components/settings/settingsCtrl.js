@@ -1,8 +1,7 @@
 /**
  * Created by mbitson on 2/13/2015.
  */
-var ordering = angular.module('ordering');
-ordering.controller('settingsCtrl', ["$scope", "$firebase", "$timeout", function ($scope, $firebase, $timeout) {
+app.controller('settingsCtrl', ["$scope", "$firebase", "$timeout", function ($scope, $firebase, $timeout) {
     var ref = new Firebase("https://shining-heat-9147.firebaseio.com/");
     var ordersRef = ref.child("settings");
     var sync = $firebase(ordersRef);
