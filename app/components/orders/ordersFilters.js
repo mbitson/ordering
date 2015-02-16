@@ -25,7 +25,30 @@ app.filter('orderName', function() {
             ){
                 accepted = true;
             }
-                
+
+            if(accepted === true){
+                output.push(item);
+            }
+        });
+
+        return output;
+    };
+}).filter('orderState', function() {
+    return function(collection) {
+        var output = [];
+        var archived = jQuery('#filterArchived').attr('aria-checked');
+
+        angular.forEach(collection, function(item) {
+            var accepted = false;
+
+            if(typeof archived != 'undefined' && archived == "true"){
+                accepted = true;
+            }else if(
+                item.state == 1
+            ){
+                accepted = true;
+            }
+
             if(accepted === true){
                 output.push(item);
             }

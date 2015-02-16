@@ -6,12 +6,14 @@ app.controller('settingsCtrl', [
     "$firebase",
     "$timeout",
     "$mdSidenav",
+    "$mdBottomSheet",
     "settingsService",
     function (
         $scope,
         $firebase,
         $timeout,
         $mdSidenav,
+        $mdBottomSheet,
         settingsService
     )
 {
@@ -29,6 +31,16 @@ app.controller('settingsCtrl', [
         'open': 'expand_more',
         'close': 'expand_less',
         'states': {}
+    };
+    // Menu items and their icons
+    $scope.bottomSheetItems = [
+        { name: 'Menu Options', icon: 'hangout' },
+        { name: 'Data Options', icon: 'mail' },
+        { name: 'Display Options', icon: 'message' }
+    ];
+    $scope.listItemClick = function($index) {
+        var clickedItem = $scope.bottomSheetItems[$index];
+        $mdBottomSheet.hide(clickedItem);
     };
 
     // Init order service from FireBase
@@ -52,11 +64,20 @@ app.controller('settingsCtrl', [
     /*
      * SideNav Controls
      */
-    $scope.close = function(){
-        $mdSidenav('settings').close();
+    $scope.close = function(sidenavName){
+        $mdSidenav(sidenavName).close();
     };
-    $scope.open = function(){
-        $mdSidenav('settings').open();
+    $scope.open = function(sidenavName){
+        if(typeof sidenavName == 'undefined'){
+            $mdBottomSheet.show({
+                templateUrl: '/app/components/settings/bottomsheet/view.html',
+                controller: settingsBottomSheetCtrl
+            }).then(function(clickedItem) {
+                $mdSidenav(clickedItem.sidenav).open();
+            });
+        }else{
+            $mdSidenav(sidenavName).open();
+        }
     };
 
 

@@ -18,24 +18,13 @@ app.controller('ordersCtrl', [
         $mdDialog
     )
 {
-    // Init variables
-    $scope.orders = [];
-    $scope.entrees = [];
-    $scope.beverages = [];
-    $scope.sides = [];
+    // Init variables (set any defaults)
     $scope.order = {
-        first_name: '',
-        last_name: '',
-        entree: '',
-        beverage: '',
-        side: ''
+        status: 'Pending',
+        state: '1'
     };
     $scope.data = {
-        icon: 'send',
-        filters: {
-            name: '',
-            number: ''
-        }
+        icon: 'send'
     };
 
     // Init order service from FireBase
@@ -57,6 +46,13 @@ app.controller('ordersCtrl', [
         $timeout(iconRestore, 2000);
         showThankYou();
     };
+    $scope.setState = function(status, state, id){
+        ordersService.updateField('status', id, status);
+        ordersService.updateField('state', id, state);
+    };
+    $scope.remove = function(id){
+        ordersService.remove(id);
+    };
 
     /*
      * Function to thank the user with a modal
@@ -67,7 +63,6 @@ app.controller('ordersCtrl', [
             templateUrl: '/app/components/orders/dialogs/thankyou/view.tmpl.html'
         })
             .then(function(answer) {
-                console.log(answer);
                 if(answer == 'list'){
                     $scope.selectedIndex = 0;
                 }else{

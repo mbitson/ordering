@@ -2,37 +2,60 @@
 <div class="after-tabs-area">
     <md-content layout="column">
         <md-list>
-            <md-item ng-repeat="order in orders | orderName">
+            <md-item class="row-heading" layout="row">
+                <div flex class="md-tile-content">Status</div>
+                <div flex class="md-tile-content">First Name</div>
+                <div flex class="md-tile-content">Last Name</div>
+                <div flex class="md-tile-content">Entree</div>
+                <div flex class="md-tile-content">Side</div>
+                <div flex class="md-tile-content">Beverage</div>
+                <div flex class="md-tile-content">Controls</div>
+            </md-item>
+            <md-item class="order" ng-repeat="order in orders | orderName | orderState">
                 <md-item-content flex>
-                    <div class="md-tile-content" layout="row">
+                    <div class="md-tile-content nit-status-{{order.state}}" layout="row">
+                        <div flex>{{order.status}}</div>
                         <div flex>{{order.first_name}}</div>
                         <div flex>{{order.last_name}}</div>
                         <div flex>{{order.entree}}</div>
                         <div flex>{{order.side}}</div>
                         <div flex>{{order.beverage}}</div>
-                        <div flex layout-align="center center" layout="row">
-                        <md-button aria-label="Cancel">
-                            <ng-md-icon
-                                    icon="highlight_remove"
-                                    style="margin-right:5px;margin-left:5px;"
-                                    size="20"
-                                    options='{"duration": 300, "rotation": "counterclock"}'>
-                            </ng-md-icon>
-                            <md-tooltip>
-                                Cancel Order
-                            </md-tooltip>
-                        </md-button>
-                        <md-button aria-label="Complete">
-                            <ng-md-icon
-                                    icon="check_circle"
-                                    style="margin-right:5px;margin-left:5px;"
-                                    size="20"
-                                    options='{"duration": 300, "rotation": "counterclock"}'>
-                            </ng-md-icon>
-                            <md-tooltip>
-                                Complete Order
-                            </md-tooltip>
-                        </md-button>
+                        <div flex>
+                            <div layout="row" style="position: relative; top:-6px;">
+                                <md-button ng-hide="order.state!=1" aria-label="Cancel" ng-click="setState('Cancelled', 3, order.$id)">
+                                    <ng-md-icon
+                                            icon="highlight_remove"
+                                            style="margin-right:5px;margin-left:5px;"
+                                            size="20"
+                                            options='{"duration": 300, "rotation": "counterclock"}'>
+                                    </ng-md-icon>
+                                    <md-tooltip>
+                                        Cancel Order
+                                    </md-tooltip>
+                                </md-button>
+                                <md-button ng-hide="order.state!=1" aria-label="Complete" ng-click="setState('Complete', 2, order.$id)">
+                                    <ng-md-icon
+                                            icon="check_circle"
+                                            style="margin-right:5px;margin-left:5px;"
+                                            size="20"
+                                            options='{"duration": 300, "rotation": "counterclock"}'>
+                                    </ng-md-icon>
+                                    <md-tooltip>
+                                        Complete Order
+                                    </md-tooltip>
+                                </md-button>
+                                <md-button aria-label="Delete" ng-click="remove(order.$id)">
+                                    <ng-md-icon
+                                            icon="delete"
+                                            style="margin-right:5px;margin-left:5px;"
+                                            size="20"
+                                            options='{"duration": 300, "rotation": "counterclock"}'>
+                                    </ng-md-icon>
+                                    <md-tooltip>
+                                        Delete Order
+                                    </md-tooltip>
+                                </md-button>
+                            </div>
                         </div>
                     </div>
                 </md-item-content>
@@ -53,7 +76,7 @@
             <input type="text" id="filterNumber" ng-model="data.filters.number">
         </md-input-container>
         <div flex></div>
-        <md-checkbox ng-model="data.filter.archived" aria-label="Disabled">
+        <md-checkbox id="filterArchived" ng-model="data.filter.archived" aria-label="Disabled">
             Show Archived?
         </md-checkbox>
         <div flex></div>

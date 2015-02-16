@@ -21,11 +21,13 @@
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/divider/divider.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/dialog/dialog.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/sidenav/sidenav.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/modules/js/bottomSheet/bottomSheet.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/tabs/tabs-default-theme.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/content/content-default-theme.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/divider/divider-default-theme.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/dialog/dialog-default-theme.min.css">
     <link rel="stylesheet" href="/bower_components/angular-material/modules/js/sidenav/sidenav-default-theme.min.css">
+    <link rel="stylesheet" href="/bower_components/angular-material/modules/js/bottomSheet/bottomSheet-default-theme.min.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
 </head>
 <body id="ordering">
@@ -78,8 +80,8 @@
             <div ng-include src="'/app/components/orders/views/create.html'"></div>
         </div>
     </ng-switch>
-    <!-- Include Settings Sidenav -->
-    <div ng-include src="'/app/components/settings/views/sidenav.html'"></div>
+    <!-- Include Settings Sidenavs -->
+    <div ng-include src="'/app/components/settings/views/sidenavs/menu.html'"></div>
 </div>
 
 <!-- Include all bower components -->
@@ -96,6 +98,7 @@
 <script src="/bower_components/angular-material/modules/js/divider/divider.js"></script>
 <script src="/bower_components/angular-material/modules/js/dialog/dialog.js"></script>
 <script src="/bower_components/angular-material/modules/js/sidenav/sidenav.js"></script>
+<script src="/bower_components/angular-material/modules/js/bottomSheet/bottomSheet.js"></script>
 <script src="/bower_components/angular-material-icons/angular-material-icons.min.js"></script>
 <script src="https://cdn.firebase.com/js/client/2.2.0/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/angularfire/0.9.2/angularfire.min.js"></script>
@@ -112,6 +115,7 @@
 
 <!-- Add any dialog controllers -->
 <script src="/app/components/orders/dialogs/thankyou/ordersThankYouCtrl.js"></script>
+<script src="/app/components/settings/bottomsheet/settingsBottomSheetCtrl.js"></script>
 
 <!-- Register Controllers -->
 <script src="/app/components/tabs/tabsCtrl.js"></script>

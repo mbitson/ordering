@@ -22,7 +22,6 @@ app.factory('ordersService', [ "$firebase", function ordersFirebaseService($fire
          * all orders to the scope.
          */
         init: function($scope) {
-            //orders.$bindTo($scope, "orders");
             $scope.orders = orders;
         },
 
@@ -32,6 +31,20 @@ app.factory('ordersService', [ "$firebase", function ordersFirebaseService($fire
          */
         add: function(data) {
             sync.$push(data);
+        },
+
+        /*
+         * Update a particular column of a particular order
+         */
+        updateField: function(field, id, value){
+            _ref.child(id).child(field).set(value);
+        },
+
+        /*
+         * Method to delete an order
+         */
+        remove: function(id){
+            _ref.child(id).remove();
         }
     };
 }]);
