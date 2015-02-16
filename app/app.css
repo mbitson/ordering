@@ -1,5 +1,7 @@
 /* app css stylesheet */
-
+#ordering{
+    font-family: "Open Sans", Arial, sans-serif;
+}
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -24,4 +26,16 @@
 .small-text{
     font-family: "Open Sans", Arial, sans-serif;
     font-size:20px !important;
+}
+
+.text-muted{
+    color: #333;
+}
+#ordering .md-button{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.md-sidenav-right{
+    position: fixed;
+    min-width: 500px;
 }
