@@ -1,0 +1,21 @@
+<md-bottom-sheet class="md-grid">
+    <md-list>
+        <md-item ng-repeat="item in bottomSheetItems" layout="row">
+            <md-button aria-label="{{item.name}}" ng-click="listItemClick($index)" layout="column">
+                <div layout="row">
+                <div style="display: block; height:80px;">
+                    <ng-md-icon
+                            icon="{{item.icon}}"
+                            size="60"
+                            style="color: #333333; fill: #333333;"
+                            options='{"duration": 300, "rotation": "counterclock"}'>
+                    </ng-md-icon>
+                </div>
+                </div>
+                <div layout="row">
+                <p style="font-size: 11px;"> {{ item.name }} </p>
+                </div>
+            </md-button>
+        </md-item>
+    </md-list>
+</md-bottom-sheet>
