@@ -37,4 +37,5 @@
 }
 .md-sidenav-right{
     position: fixed;
+    min-width: 500px;
 }

@@ -22,7 +22,6 @@ function ordersThankYouCtrl($scope, $mdDialog, $interval){
             next = incremented;
         }
         $scope.icons.now = cycle[next];
-        console.log($scope.icons.now);
     }
 
     $scope.hide = function() {
@@ -32,6 +31,7 @@ function ordersThankYouCtrl($scope, $mdDialog, $interval){
         $mdDialog.cancel();
     };
     $scope.answer = function(answer) {
+        console.log(answer);
         $mdDialog.hide(answer);
     };
 }

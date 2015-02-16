@@ -31,8 +31,6 @@ app.factory('ordersService', [ "$firebase", function ordersFirebaseService($fire
          * order to FireBase
          */
         add: function(data) {
-            console.log('order');
-            console.log(data);
             sync.$push(data);
         }
     };

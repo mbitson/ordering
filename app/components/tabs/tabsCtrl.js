@@ -10,6 +10,8 @@ app.controller('tabsCtrl', ["$scope", function( $scope ) {
         $scope.selectedIndex = Math.max($scope.selectedIndex - 1, 0);
     };
     $scope.select = function($index){
+        console.log($index);
         $scope.selectedIndex = $index;
+        console.log($scope.selectedIndex);
     };
 }]);

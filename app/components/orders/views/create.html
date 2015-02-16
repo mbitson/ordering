@@ -18,24 +18,21 @@
         <md-input-container flex>
             <p>Please select an entree:
             <md-radio-group id="entree" ng-model="order.entree">
-                <md-radio-button value="Salmon">Salmon</md-radio-button>
-                <md-radio-button value="Steak">Steak</md-radio-button>
+                <md-radio-button value="{{entree.name}}" ng-repeat="entree in options.entrees" ng-if="entree.enabled">{{entree.name}}</md-radio-button>
             </md-radio-group>
             </p>
         </md-input-container>
         <md-input-container flex>
             <p>Please select a side:
-                <md-radio-group id="entree" ng-model="order.side">
-                    <md-radio-button value="Potatoes">Potatoes</md-radio-button>
-                    <md-radio-button value="Vegetables">Vegetables</md-radio-button>
+                <md-radio-group id="side" ng-model="order.side">
+                    <md-radio-button value="{{side.name}}" ng-repeat="side in options.sides" ng-if="side.enabled">{{side.name}}</md-radio-button>
                 </md-radio-group>
             </p>
         </md-input-container>
         <md-input-container flex>
             <p>Please select an beverage:
-                <md-radio-group id="entree" ng-model="order.beverage">
-                    <md-radio-button value="Coke">Coke</md-radio-button>
-                    <md-radio-button value="Pepsi">Pepsi</md-radio-button>
+                <md-radio-group id="beverage" ng-model="order.beverage">
+                    <md-radio-button value="{{beverage.name}}" ng-repeat="beverage in options.beverages" ng-if="beverage.enabled">{{beverage.name}}</md-radio-button>
                 </md-radio-group>
             </p>
         </md-input-container>

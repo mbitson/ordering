@@ -20,6 +20,9 @@ app.controller('ordersCtrl', [
 {
     // Init variables
     $scope.orders = [];
+    $scope.entrees = [];
+    $scope.beverages = [];
+    $scope.sides = [];
     $scope.order = {
         first_name: '',
         last_name: '',
@@ -37,6 +40,7 @@ app.controller('ordersCtrl', [
 
     // Init order service from FireBase
     ordersService.init($scope);
+    settingsService.init($scope);
 
     /*
      * Function to reset all order data
@@ -49,7 +53,6 @@ app.controller('ordersCtrl', [
      * Function to submit this order to the firebase service
      */
     $scope.submitOrder = function(){
-        console.log($scope.order);
         ordersService.add($scope.order);
         $timeout(iconRestore, 2000);
         showThankYou();
@@ -64,9 +67,13 @@ app.controller('ordersCtrl', [
             templateUrl: '/app/components/orders/dialogs/thankyou/view.tmpl.html'
         })
             .then(function(answer) {
-                $scope.alert = 'You said the information was "' + answer + '".';
+                console.log(answer);
+                if(answer == 'list'){
+                    $scope.selectedIndex = 0;
+                }else{
+                    $scope.order = {};
+                }
             }, function() {
-                $scope.alert = 'You cancelled the dialog.';
             });
     }
 

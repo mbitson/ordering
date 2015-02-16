@@ -4,7 +4,8 @@ var app = angular.module('ordering', [
   'ngMaterial',
   'ngAnimate',
   'ngMdIcons',
-  'firebase'
+  'firebase',
+  'angularSlideables'
 ]);
 app.config(function ($mdThemingProvider) {
     // Configure a dark theme with primary foreground yellow

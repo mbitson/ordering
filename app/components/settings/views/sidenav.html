@@ -3,36 +3,66 @@
         <h1 class="md-toolbar-tools">Application Settings</h1>
     </md-toolbar>
     <md-content class="md-padding" ng-controller="settingsCtrl" layout="column">
-        <h2>Entrees</h2>
-        <md-input-container flex ng-repeat="product in settings.products" layout="row">
-            <input type="text" ng-model="product" flex />
-            <md-button ng-click="addBlank('products')">
-                <ng-md-icon
-                        icon="remove_circle"
-                        style="margin-right:5px;margin-left:5px;"
-                        size="20"
-                        options='{"duration": 300, "rotation": "counterclock"}'>
-                </ng-md-icon>
-                <md-tooltip>
-                    Remove Last Product
-                </md-tooltip>
+        <md-content ng-repeat="(optionLabel, option) in options">
+            <div layout="row">
+                <md-button ng-click="openTab(optionLabel)" slide-toggle="#content-{{optionLabel}}">
+                    <ng-md-icon
+                            icon="{{getIcon(optionLabel)}}"
+                            style="margin-right:5px;margin-left:5px;"
+                            size="20"
+                            aria-label="expand-{{upperCase(singular(optionLabel))}}"
+                            options='{"duration": 300, "rotation": "counterclock"}'>
+                    </ng-md-icon>
+                    <md-tooltip>
+                        Toggle Section
+                    </md-tooltip>
+                </md-button>
+                <h2>{{upperCase(optionLabel)}}</h2>
+                <md-button ng-click="addBlank(optionLabel)">
+                    <ng-md-icon
+                            icon="add_circle"
+                            style="margin-right:5px;margin-left:5px;"
+                            size="20"
+                            aria-label="add-{{upperCase(singular(optionLabel))}}"
+                            options='{"duration": 300, "rotation": "counterclock"}'>
+                    </ng-md-icon>
+                    <md-tooltip>
+                        Add New {{upperCase(singular(optionLabel))}}
+                    </md-tooltip>
+                </md-button>
+            </div>
+            <div id="content-{{optionLabel}}" class="md-accordion-content slideable">
+                <md-input-container flex ng-repeat="entree in option" layout="row">
+                    <md-checkbox ng-model="entree.enabled" aria-label="Checkbox 1">
+                        <md-tooltip>
+                            Is this {{upperCase(singular(optionLabel))}} enabled?
+                        </md-tooltip>
+                    </md-checkbox>
+                    <input type="text" ng-model="entree.name" flex />
+                    <md-button ng-click="remove(optionLabel, entree.$id)">
+                        <ng-md-icon
+                                icon="remove_circle"
+                                style="margin-right:5px;margin-left:5px;"
+                                size="20"
+                                aria-label="remove-{{optionLabel}}"
+                                options='{"duration": 300, "rotation": "counterclock"}'>
+                        </ng-md-icon>
+                        <md-tooltip>
+                            Remove This {{upperCase(singular(optionLabel))}}
+                        </md-tooltip>
+                    </md-button>
+                </md-input-container>
+            </div>
+        </md-content>
+        <md-content layout="column">
+            <hr />
+            <md-button ng-click="save()" class="md-raised md-primary" flex>
+                Save Settings
             </md-button>
-        </md-input-container>
-        <md-content layout="row" class="settings-products-toolbar">
-            <md-button ng-click="addBlank('products')">
-                <ng-md-icon
-                        icon="add_circle"
-                        style="margin-right:5px;margin-left:5px;"
-                        size="20"
-                        options='{"duration": 300, "rotation": "counterclock"}'>
-                </ng-md-icon>
-                <md-tooltip>
-                    Add New Product
-                </md-tooltip>
+            <hr />
+            <md-button ng-click="close()" class="md-raised md-warn" flex>
+                Close Settings
             </md-button>
         </md-content>
-        <md-button ng-click="close()" class="md-raised md-warn" style="position: fixed; bottom: 5px; display: block; width: 90%;">
-            Close Settings
-        </md-button>
     </md-content>
 </md-sidenav>
